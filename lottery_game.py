@@ -32,7 +32,8 @@ def calculate_winnings(user_numbers, winning_numbers):
         print("Congratulations! You won ${}! You big-baller, you. Go buy yourself something nice."
                   .format(total_earnings))
         print("The winning numbers were {}".format(winning_numbers))
-        print("You guessed {}, of which {} were correct.".format(str(user_numbers), str(len(correct_numbers))))
+        print("You guessed {}, of which {} were correct."
+                  .format(str(user_numbers), str(len(correct_numbers))))
     else:
         print("You win nothing... nothing! Go home! You LOSE! \n Game over, you have no one except yourself to blame.")
 
