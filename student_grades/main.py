@@ -1,11 +1,10 @@
-# Refactor this to a Student class
-
 class_roster = []
 
 class Student:
-    def __init__(self, first_name, last_name):
+    def __init__(self, first_name, last_name, student_id):
         self.first_name = first_name
         self.last_name = last_name
+        self.student_id = student_id
         self.grades = []
 
     def average_grades(self):
@@ -33,8 +32,8 @@ def launch_menu():
             class_roster.append(create_student())
         elif user_selection == "g":
             student_id = input("\nEnter the student id: ")
-            student = class_roster[int(student_id)]
-
+            student = class_roster[int(student_id) - 1]
+            # This could use some error handling
             new_grade = input("\nEnter the grade to be added: ")
             add_grades(student, [int(new_grade)])
         else:
@@ -50,8 +49,8 @@ def launch_menu():
 def create_student():
     first_name = input("\nEnter the student's first name: ")
     last_name = input("\nEnter the student's last name: ")
-
-    student = Student(first_name, last_name)
+    student_id = (len(class_roster) + 1)
+    student = Student(first_name, last_name, student_id)
 
     return student
 
@@ -71,12 +70,8 @@ def student_report(student):
 
 
 def class_report(roster):
-    # We'd be better off adding an ID here and not relying on the its index inside class_roster
-    for i, student in enumerate(roster):
-        print("ID: {}".format(i))
+    for student in roster:
         print(student_report(student))
-
     return None
-
 
 launch_menu()
