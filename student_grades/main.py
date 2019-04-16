@@ -1,4 +1,23 @@
+# Refactor this to a Student class
+
 class_roster = []
+
+class Student:
+    def __init__(self, first_name, last_name):
+        self.first_name = first_name
+        self.last_name = last_name
+        self.grades = []
+
+    def average_grades(self):
+        total = len(self.grades)
+
+        if total != 0:
+            average = sum(self.grades) / total
+        else:
+            return 0
+
+        return average
+
 
 def launch_menu():
     user_selection = input("Enter 'p' to print the class roster, \n"
@@ -32,38 +51,23 @@ def create_student():
     first_name = input("\nEnter the student's first name: ")
     last_name = input("\nEnter the student's last name: ")
 
-    student = {
-        "first_name": first_name,
-        "last_name": last_name,
-        "grades": []
-    }
+    student = Student(first_name, last_name)
 
     return student
 
 
 def add_grades(student, grades):
     for grade in grades:
-        student["grades"].append(grade)
+        student.grades.append(grade)
 
     return None
 
 
-def average_grades(grades):
-    total = len(grades)
-
-    if total != 0:
-        average = sum(grades) / total
-    else:
-        return 0
-
-    return average
-
-
 def student_report(student):
     return "Student name: {} {} \n Average grade: {} \n"\
-            .format(student["first_name"],
-                    student["last_name"],
-                    average_grades(student["grades"]))
+            .format(student.first_name,
+                    student.last_name,
+                    student.average_grades())
 
 
 def class_report(roster):
@@ -73,5 +77,6 @@ def class_report(roster):
         print(student_report(student))
 
     return None
+
 
 launch_menu()
