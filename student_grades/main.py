@@ -1,5 +1,6 @@
 class_roster = []
 
+
 class Student:
     def __init__(self, first_name, last_name, student_id):
         self.first_name = first_name
@@ -18,12 +19,18 @@ class Student:
         return average
 
 
-def launch_menu():
+def user_selection_prompt():
     user_selection = input("Enter 'p' to print the class roster, \n"
                            "'a' to add a new student to the roster, \n"
                            "'g' to add a grade to a student, \n"
                            "'q' to quit:\n"
                            "\n")
+
+    return user_selection
+
+
+def launch_menu():
+    user_selection = user_selection_prompt()
 
     while user_selection != "q":
         if user_selection == "p":
@@ -39,11 +46,7 @@ def launch_menu():
         else:
             print("\n That's an invalid entry, sorry.")
 
-        user_selection = input("\nEnter 'p' to print the class roster, \n"
-                               "'a' to add a new student to the roster, \n"
-                               "'g' to add a grade to a student, \n"
-                               "'q' to quit:\n"
-                               "\n")
+        user_selection = user_selection_prompt()
 
 
 def create_student():
@@ -72,6 +75,8 @@ def student_report(student):
 def class_report(roster):
     for student in roster:
         print(student_report(student))
+
     return None
+
 
 launch_menu()
