@@ -1,0 +1,5 @@
+roz0n
+Kid A,Radiohead,Alternative,True
+Baby on Baby,DaBaby,Hip-Hop/Rap,True
+album_1,San Holo,Futurebass,True
+Vega,il:lo,Electronic,False
